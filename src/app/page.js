@@ -1,8 +1,11 @@
+"use client";
+import HelloWorld from "./HelloWorld";
+import SimpleInput from "./SimpleInput";
 export default function HomePage() {
   return (
     <>
       <main>
-        <h1>Hello, world!</h1>
+        <HelloWorld />
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
           convallis ante ut magna condimentum, eget ornare ligula mattis.
@@ -19,7 +22,9 @@ export default function HomePage() {
           vehicula lobortis.
         </p>
       </main>
-      <footer></footer>
+      <footer>
+        <SimpleInput />
+      </footer>
     </>
   );
 }
