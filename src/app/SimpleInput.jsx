@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 export default function SimpleInput() {
   // State serves a similar function to object properties - they are variables for which the component is self-responsible.
   // They are most often declared in destructured array notation with the variable name first, then the setter function.
@@ -6,7 +6,6 @@ export default function SimpleInput() {
     firstName: "",
     lastName: ""
   });
-
   // Effects are the counterpart to setting state, setting state is a cause and an effect is... an effect.
   useEffect(() => {
     // The function in the first argument of the effect runs whenever its dependencies update.

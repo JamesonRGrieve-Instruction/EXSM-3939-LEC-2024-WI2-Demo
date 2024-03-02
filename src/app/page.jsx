@@ -2,7 +2,7 @@
 import HelloWorld from "./HelloWorld";
 import SimpleInput from "./SimpleInput";
 import styles from './page.module.css'
-import { useState } from 'react';
+import React, { useState } from 'react';
 export default function HomePage() {
   const [showFields, setShowFields] = useState(true);
   return (
