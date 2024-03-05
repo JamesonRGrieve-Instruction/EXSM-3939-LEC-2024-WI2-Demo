@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-export default function StatefulInput() {
+export default function StatefulTextArea() {
   const [inputValue, setInputValue] = useState("");
 
   return <div>
-    <input type="text" value={inputValue} onChange={(e) => {
+    <textarea onChange={(e) => {
       console.log("New Value: ", e.target.value);
       setInputValue(e.target.value);
-    }} placeholder="Enter a value..." />
+    }} value={inputValue}></textarea>
   </div>;
 
 }

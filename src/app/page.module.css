@@ -1,7 +1,11 @@
-.bodyText {
-  background-color: rgb(177, 255, 177);
+.main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 0 auto;
+  max-width: 1200px;
 }
-.bodyText p,
-.bodyText h1 {
-  color: rgb(19, 96, 19);
+.footer {
+  text-align: center;
 }
