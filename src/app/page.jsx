@@ -1,6 +1,5 @@
 "use client";
-import HelloWorld from "./HelloWorld";
-import SimpleInput from "./SimpleInput";
+import StatefulInput from "../components/fields/StatefulInput";
 import styles from './page.module.css'
 import React, { useState } from 'react';
 export default function HomePage() {
@@ -8,7 +7,6 @@ export default function HomePage() {
   return (
     <>
       <main className={styles.bodyText}>
-        <HelloWorld />
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
           convallis ante ut magna condimentum, eget ornare ligula mattis.
@@ -26,7 +24,7 @@ export default function HomePage() {
         </p>
       </main>
       <footer>
-        {showFields ? <SimpleInput /> : null}
+        {showFields ? <StatefulInput /> : null}
         <button onClick={() => { setShowFields(false) }}>Remove</button>
       </footer>
     </>
