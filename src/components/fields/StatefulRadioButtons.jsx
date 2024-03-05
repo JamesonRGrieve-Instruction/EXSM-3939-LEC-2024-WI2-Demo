@@ -7,12 +7,12 @@ export default function StatefulRadioButtons() {
     setInputValue(newValue)
   }
   return <div>
-    <input id="example-radio-1" name="example-radio" type="radio" checked={inputValue === 1} onChange={handleRadioClick} />
-    <label htmlFor="example-radio-1">Example Radio 1</label>
-    <input id="example-radio-2" name="example-radio" type="radio" checked={inputValue === 2} onChange={handleRadioClick} />
-    <label htmlFor="example-radio-2">Example Radio 2</label>
-    <input id="example-radio-3" name="example-radio" type="radio" checked={inputValue === 3} onChange={handleRadioClick} />
-    <label htmlFor="example-radio-3">Example Radio 3</label>
+    {
+      [1, 2, 3].map((number) => <div key={"example-radio-" + number}>
+        <input id={"example-radio-" + number} name="example-radio" type="radio" checked={inputValue === number} onChange={handleRadioClick} />
+        <label htmlFor={"example-radio-" + number}>Example Radio {number}</label>
+      </div>)
+    }
   </div>;
 
 }
