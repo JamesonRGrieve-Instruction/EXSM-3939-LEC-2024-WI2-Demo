@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from "./fields.module.css";
 export default function StatefulRadioButtons() {
   const [inputValue, setInputValue] = useState(1);
   function handleRadioClick(event) {
@@ -6,7 +7,7 @@ export default function StatefulRadioButtons() {
     console.log("New Value: ", newValue);
     setInputValue(newValue)
   }
-  return <div>
+  return <div className={styles.field}>
     {
       [1, 2, 3].map((number) => <div key={"example-radio-" + number}>
         <input id={"example-radio-" + number} name="example-radio" type="radio" checked={inputValue === number} onChange={handleRadioClick} />
