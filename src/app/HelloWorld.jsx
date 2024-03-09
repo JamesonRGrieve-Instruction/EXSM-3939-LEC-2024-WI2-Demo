@@ -1,0 +1,4 @@
+import React from "react";
+export default function HelloWorld() {
+    return <p>Hello, World from the HelloWorld component!</p>;
+}
