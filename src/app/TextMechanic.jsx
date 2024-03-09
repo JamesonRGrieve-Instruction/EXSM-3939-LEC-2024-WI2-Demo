@@ -8,7 +8,6 @@ export default function TextMechanic() {
   // useMemo stores a value (typically a constant) in memory. Similar to useEffect, useMemo has a dependency array - when any dependency changes, 
   // the value will be recalculated. If the array is empty it will be memoized for the lifespan of the component.
   const controls = useMemo(() => ({
-
     "Toggle Heading": () => {
       setShowHeading(old => !old);
     },
