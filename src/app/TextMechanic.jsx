@@ -45,18 +45,45 @@ export default function TextMechanic() {
       "Cipher Down": () => {
         setInputValue(old => old.split('').map(char => char.match(/^[a-zA-Z]+$/i) ? (String.fromCharCode([65, 97].includes(char.charCodeAt(0)) ? char.charCodeAt(0) + 25 : char.charCodeAt(0) - 1)) : char).join(""));
       },
+      "Remove Multiple Sequential Spaces": () => {
+        setInputValue(old => old.replaceAll(/ {2,}/g, " "));
+      },
+      "Remove Duplicate Lines": () => {
+        setInputValue(old => Array.from(new Set(old.split('\n'))).join("\n"));
+      },
+      "Remove Duplicate Lines (Case Insensitive)": () => {
+        // TODO Complete.
+      },
+      // This needs a dependency to inputValue and should be its own memoized constant.
+      "Word Count": () => {
+        console.log(inputValue.split('\n').map(line => line.split(' ')).flat())
+        alert(inputValue.split('\n').map(line => line.split(' ')).flat().length);
+      },
     }
   }, []);
   const oneFieldControls = useMemo(() => ({
     "Remove All Lines Containing Field A": () => {
-      console.log("Field A", fieldAValue);
       setInputValue(old => old.split('\n').filter(line => !line.includes(fieldAValue.trim())).join('\n'));
+    },
+    "Capitalize All Instances of Field A": () => {
+      setInputValue(old => old.replaceAll(fieldAValue.trim(), fieldAValue.trim().toUpperCase()));
+    },
+    "Remove Line Number (Field A)": () => {
+      setInputValue(old => old.split('\n').toSpliced(Number(fieldAValue) - 1, 1).join('\n'));
     }
+
   }), [fieldAValue])
   const twoFieldControls = useMemo(() => ({
     "Replace Field A with Field B": () => {
-      console.log("Field A", fieldAValue, "Field B", fieldBValue);
       setInputValue(old => old.replaceAll(fieldAValue.trim(), fieldBValue.trim()));
+    },
+    "Join Lines (Field A) and (Field B)": () => {
+      setInputValue(old => {
+        const first = old.split('\n')[Number(fieldAValue) - 1];
+        const second = old.split('\n')[Number(fieldBValue) - 1];
+        console.log("First", first, typeof (first), Number(fieldAValue) + 1, "Second", second, typeof (second), Number(fieldBValue) + 1);
+        return old.split('\n').toSpliced(Number(fieldAValue) - 1, 1, first + second).toSpliced(Number(fieldBValue) - 1, 1).join('\n');
+      });
     }
   }), [fieldAValue, fieldBValue])
 
