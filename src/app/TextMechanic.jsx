@@ -1,10 +1,12 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import styles from "./page.module.css";
-import { useCallback } from 'react/cjs/react.production.min';
 export default function TextMechanic() {
   const [inputValue, setInputValue] = useState("");
   const [showHeading, setShowHeading] = useState(true);
   const [charInputValue, setCharInputValue] = useState("");
+  const [fieldAValue, setFieldAValue] = useState("");
+  const [fieldBValue, setFieldBValue] = useState("");
+
   // useMemo stores a value (typically a constant) in memory. Similar to useEffect, useMemo has a dependency array - when any dependency changes, 
   // the value will be recalculated. If the array is empty it will be memoized for the lifespan of the component.
   const controls = useMemo(() => ({
@@ -48,9 +50,12 @@ export default function TextMechanic() {
       console.log("New Value: ", e.target.value);
       setInputValue(e.target.value);
     }} value={inputValue}></textarea>
+    <input id="field-a" value={fieldAValue} onChange={(event) => setFieldAValue(event.target.value)}></input>
+    <input id="field-b" value={fieldBValue} onChange={(event) => setFieldBValue(event.target.value)}></input>
     <div className={styles.control}>
       {objectMap(controls, (label, controlFunction) => <button key={label} onClick={(e) => { e.preventDefault(); controlFunction(); setCharInputValue(old => old + e.target.innerText[0]) }}>{label}</button>)}
     </div>
+
     <input type="text" value={charInputValue} disabled />
   </div>;
 }
