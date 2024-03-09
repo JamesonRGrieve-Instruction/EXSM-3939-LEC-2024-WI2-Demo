@@ -47,7 +47,13 @@ export default function TextMechanic() {
       },
     }
   }, []);
-  const dynamicControls = useMemo(() => ({
+  const oneFieldControls = useMemo(() => ({
+    "Remove All Lines Containing Field A": () => {
+      console.log("Field A", fieldAValue);
+      setInputValue(old => old.split('\n').filter(line => !line.includes(fieldAValue.trim())).join('\n'));
+    }
+  }), [fieldAValue])
+  const twoFieldControls = useMemo(() => ({
     "Replace Field A with Field B": () => {
       console.log("Field A", fieldAValue, "Field B", fieldBValue);
       setInputValue(old => old.replaceAll(fieldAValue.trim(), fieldBValue.trim()));
@@ -74,7 +80,7 @@ export default function TextMechanic() {
     </div>
 
     <div className={styles.control}>
-      {objectMap({ ...staticControls, ...dynamicControls }, (label, controlFunction) => <button key={label} onClick={(e) => { e.preventDefault(); controlFunction(); setCharInputValue(old => old + e.target.innerText[0]) }}>{label}</button>)}
+      {objectMap({ ...staticControls, ...oneFieldControls, ...twoFieldControls }, (label, controlFunction) => <button key={label} onClick={(e) => { e.preventDefault(); controlFunction(); setCharInputValue(old => old + e.target.innerText[0]) }}>{label}</button>)}
     </div>
 
     <div>
