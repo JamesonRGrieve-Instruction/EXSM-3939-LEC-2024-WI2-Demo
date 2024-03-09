@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import styles from "./page.module.css";
+import { useCallback } from 'react/cjs/react.production.min';
 export default function TextMechanic() {
   const [inputValue, setInputValue] = useState("");
   const [showHeading, setShowHeading] = useState(true);
   const [charInputValue, setCharInputValue] = useState("");
-  const controls = {
+  // useMemo stores a value (typically a constant) in memory. Similar to useEffect, useMemo has a dependency array - when any dependency changes, 
+  // the value will be recalculated. If the array is empty it will be memoized for the lifespan of the component.
+  const controls = useMemo(() => ({
     "Toggle Heading": () => {
       setShowHeading(old => !old);
     },
@@ -32,10 +35,15 @@ export default function TextMechanic() {
     "Cipher Down": () => {
       setInputValue(old => old.split('').map(char => char.match(/^[a-zA-Z]+$/i) ? (String.fromCharCode([65, 97].includes(char.charCodeAt(0)) ? char.charCodeAt(0) + 25 : char.charCodeAt(0) - 1)) : char).join(""));
     }
-  }
-  function objectMap(object, fn) {
+  }), []);
+
+  // useCallback works identically to useMemo, just with functions instead of values.
+  // In this case, the function could've just been ejected from the component as it does not reference state.
+  // I kept it in with an empty array as a demo of syntax.
+  const objectMap = useCallback((object, fn) => {
     return Object.keys(object).map(key => fn(key, object[key]));
-  }
+  }, [])
+
   return <div className={styles.field}>
     {showHeading ? <h1>Text Mechanic</h1> : null}
     <textarea onChange={(e) => {
