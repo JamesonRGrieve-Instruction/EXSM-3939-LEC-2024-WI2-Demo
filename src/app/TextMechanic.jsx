@@ -8,6 +8,7 @@ export default function TextMechanic() {
   // useMemo stores a value (typically a constant) in memory. Similar to useEffect, useMemo has a dependency array - when any dependency changes, 
   // the value will be recalculated. If the array is empty it will be memoized for the lifespan of the component.
   const controls = useMemo(() => ({
+
     "Toggle Heading": () => {
       setShowHeading(old => !old);
     },
@@ -40,9 +41,7 @@ export default function TextMechanic() {
   // useCallback works identically to useMemo, just with functions instead of values.
   // In this case, the function could've just been ejected from the component as it does not reference state.
   // I kept it in with an empty array as a demo of syntax.
-  const objectMap = useCallback((object, fn) => {
-    return Object.keys(object).map(key => fn(key, object[key]));
-  }, [])
+  const objectMap = useCallback((object, fn) => Object.keys(object).map(key => fn(key, object[key])), [])
 
   return <div className={styles.field}>
     {showHeading ? <h1>Text Mechanic</h1> : null}
