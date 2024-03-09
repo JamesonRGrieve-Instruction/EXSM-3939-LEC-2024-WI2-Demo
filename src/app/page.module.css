@@ -2,10 +2,25 @@
   margin: 0 auto;
   max-width: 1200px;
 }
-.field > textarea {
+.text_mechanic > textarea {
   resize: none;
   width: 100%;
   height: 400px;
+}
+.text_mechanic > div:first-of-type {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 60%;
+  margin: 1rem auto;
+}
+.text_mechanic > div:first-of-type > label {
+  text-align: center;
+}
+.text_mechanic > div:last-of-type {
+  margin: 1rem 0;
+  text-align: center;
 }
 .control {
   display: grid;
