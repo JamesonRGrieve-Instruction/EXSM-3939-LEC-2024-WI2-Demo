@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import useSWR, { mutate } from "swr";
+
 export default function FetchUsers() {
+  const [randomNumber, setRandomNumber] = useState(0);
   const { data, isLoading, error } = useSWR(
-    "/users",
+    "/users" + randomNumber,
     async () => {
       return (
         await axios.get(
@@ -13,12 +15,15 @@ export default function FetchUsers() {
     },
     {
       revalidateOnFocus: false,
-      onSuccess: (data) => {
-        console.log(data);
+      onSuccess: (data, key) => {
+        console.log(key, data);
       },
       onError: () => {},
     },
   );
+  useEffect(() => {
+    setRandomNumber(Math.floor(Math.random() * 1000));
+  }, []);
   return isLoading ? (
     <p>Loading users...</p>
   ) : error ? (
