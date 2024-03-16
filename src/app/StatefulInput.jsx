@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 export default function StatefulInput() {
   const [inputValue, setInputValue] = useState("");
-  const inputRef = useRef(null);
+  const inputRef = useRef();
   return (
     <>
       <input
