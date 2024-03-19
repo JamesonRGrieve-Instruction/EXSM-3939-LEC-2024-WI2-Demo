@@ -2,6 +2,7 @@
 import React, { useState, createContext } from "react";
 import Paragraph from "./Paragraph";
 import Form from "./Form";
+import SimpleWrapper from "./SimpleWrapper";
 const additionFields = [
   { name: "name", label: "Name", type: "text" },
   { name: "label", label: "Label", type: "text" },
@@ -24,8 +25,9 @@ export default function Home() {
       /* value="Hello, World!" */
     >
       <main>
-        <Paragraph text="Hello, World!" />
-
+        <SimpleWrapper title="Context Renderer">
+          <Paragraph text="Hello, World!" />
+        </SimpleWrapper>
         {/* 
       This form has its fields provided by the displayFields state of the page component.
       As the value of the prop is state, a change to that state will force a component rerender, just like its own state would.
