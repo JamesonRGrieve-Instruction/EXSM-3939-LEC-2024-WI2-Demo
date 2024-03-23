@@ -1,6 +1,18 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import CountTracker from "./CountTracker";
 export default function Home() {
-  return <CountTracker name="James" age={50} profession="Bus Driver" />;
+  const [showTracker, setShowTracker] = useState(true);
+  return (
+    <>
+      {showTracker && <CountTracker />}
+      <button
+        onClick={() => {
+          setShowTracker((previous) => !previous);
+        }}
+      >
+        Toggle Tracker
+      </button>
+    </>
+  );
 }
