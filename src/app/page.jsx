@@ -26,7 +26,11 @@ export default function Home() {
     >
       <main>
         <SimpleWrapper title="Context Renderer">
-          <Paragraph text="Hello, World!" />
+          <Paragraph
+            text="Hello, World!"
+            localImageSrc="/img/mountains.jpg"
+            remoteImageSrc="https://cdn.pixabay.com/photo/2024/01/29/20/04/mountains-8540738_1280.jpg"
+          />
         </SimpleWrapper>
         {/* 
       This form has its fields provided by the displayFields state of the page component.
