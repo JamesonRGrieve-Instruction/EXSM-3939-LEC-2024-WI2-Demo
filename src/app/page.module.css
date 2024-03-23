@@ -3,3 +3,8 @@
   justify-content: center;
   gap: 1rem;
 }
+.img_container > div {
+  position: relative;
+  width: 240px;
+  height: 160px;
+}

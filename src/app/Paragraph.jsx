@@ -13,18 +13,12 @@ export default function Paragraph({ text, localImageSrc, remoteImageSrc }) {
         {text}Context: {contextValue.data}
       </p>
       <div className={styles.img_container}>
-        <Image
-          src={localImageSrc}
-          alt="Locally Provided"
-          width="240"
-          height="160"
-        />
-        <Image
-          src={remoteImageSrc}
-          alt="Remote Acquired"
-          width="240"
-          height="160"
-        />
+        <div>
+          <Image src={localImageSrc} alt="Locally Provided" fill />
+        </div>
+        <div>
+          <Image src={remoteImageSrc} alt="Remote Acquired" fill />
+        </div>
       </div>
       <button
         onClick={() => {
