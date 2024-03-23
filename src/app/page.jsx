@@ -1,5 +1,6 @@
+"use client";
 import React from "react";
-import Greeter from "./Greeter";
+import CountTracker from "./CountTracker";
 export default function Home() {
-  return <Greeter name="James" age={50} profession="Bus Driver" />;
+  return <CountTracker name="James" age={50} profession="Bus Driver" />;
 }
