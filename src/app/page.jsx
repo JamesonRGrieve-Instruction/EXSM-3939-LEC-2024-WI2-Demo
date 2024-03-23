@@ -16,12 +16,16 @@ export default function Home() {
     { name: "password", label: "Password", type: "password" },
   ]);
   // With this context we are providing a way to change the value as well as read the value, so we are binding it to a state.
-  const [exampleText, setExampleText] = useState("Hello, World!");
+  const [exampleList, setExampleList] = useState([
+    { label: "Hello, World!", added: new Date() },
+    { label: "Test 123", added: new Date() },
+    { label: "Yes, no.", added: new Date() },
+  ]);
   return (
     // Everything within the provider has access to the provider's value through a useContext() hook.
     // The value prop of the provider sets the initial value of the context, in this case bound to the state via reference.
     <ExampleContext.Provider
-      value={{ data: exampleText, mutate: setExampleText }}
+      value={{ data: exampleList, mutate: setExampleList }}
       /* value="Hello, World!" */
     >
       <main>
