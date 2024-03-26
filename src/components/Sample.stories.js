@@ -1,5 +1,6 @@
 import React from 'react';
 import SampleComponent from './Sample';
+import { Title, Subtitle, Description, Primary, Controls, Stories } from '@storybook/blocks';
 
 // Default export with title
 export default {
@@ -17,6 +18,16 @@ export default {
       description: {
         component: 'This is a component purely for demonstrative purposes. It has a few string props, nothing crazy, just a sandbox for learning how this all works.',
       },
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <Controls />
+          <Stories />
+        </>
+      ),
     },
   },
 };

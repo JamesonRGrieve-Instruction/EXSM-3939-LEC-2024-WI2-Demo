@@ -10,6 +10,7 @@ const preview = {
         date: /Date$/,
       },
     },
+
     docs: {
       page: () => (
         <>
@@ -18,7 +19,6 @@ const preview = {
           <Description />
           <Primary />
           <Controls />
-          <Stories />
         </>
       ),
     },
