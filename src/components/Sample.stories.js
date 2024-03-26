@@ -5,10 +5,19 @@ import SampleComponent from './Sample';
 export default {
   title: 'Sample/Sample',
   component: SampleComponent,
+  tags: ['autodocs'],
   argTypes: {
     heading: { control: 'text' },
     bodyText: { control: 'text' },
     buttonText: { control: 'text' },
+  },
+  parameters: {
+    componentSubtitle: 'A Sample Component For Learning Storybook',
+    docs: {
+      description: {
+        component: 'This is a component purely for demonstrative purposes. It has a few string props, nothing crazy, just a sandbox for learning how this all works.',
+      },
+    },
   },
 };
 
