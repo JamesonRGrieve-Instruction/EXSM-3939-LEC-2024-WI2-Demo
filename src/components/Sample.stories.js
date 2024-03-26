@@ -28,6 +28,9 @@ export default {
           <Stories />
         </>
       ),
+      toc: {
+        title: 'Table of Contents',
+      },
     },
   },
 };
