@@ -1,6 +1,6 @@
 import React from 'react';
-import SampleComponent from './Sample';
 import { Title, Subtitle, Description, Primary, Controls, Stories } from '@storybook/blocks';
+import SampleComponent from './Sample';
 
 // Default export with title
 export default {
