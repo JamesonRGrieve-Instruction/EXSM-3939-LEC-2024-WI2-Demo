@@ -88,7 +88,7 @@ export default function Home() {
     <>
       <header>
         <nav>
-          <ul>
+          <ul className={styles.flex_wrap}>
             {[...Object.keys(productData), 'checkout'].map((category) => (
               <li key={category}>
                 <button

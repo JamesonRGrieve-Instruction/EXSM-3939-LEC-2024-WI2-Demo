@@ -6,3 +6,40 @@
   padding: 6rem;
   min-height: 100vh;
 }
+
+.quantity_div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.25rem;
+  background-color: blanchedalmond;
+  align-items: center;
+}
+.quantity_button {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: blanchedalmond;
+}
+
+.quantity_field {
+  height: 1.5rem;
+  font-size: 1.5rem;
+  width: 4rem;
+}
+
+.product_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flex_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  max-width: 1200px;
+  gap: 3rem;
+  list-style: none;
+  justify-content: center;
+}

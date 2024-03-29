@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { CartContext } from './page';
+import styles from './page.module.css';
 export default function CartQuantity({ category, product, price }) {
   const products = useContext(CartContext);
   return (
-    <div>
+    <div className={styles.quantity_div}>
       <button
+        className={styles.quantity_button}
         onClick={() =>
           products.mutate((previous) =>
             [
@@ -24,6 +26,7 @@ export default function CartQuantity({ category, product, price }) {
       {products.data.find((item) => item.name === product) && (
         <>
           <input
+            className={styles.quantity_field}
             type='number'
             value={products.data.find((item) => item.name === product).quantity}
             onChange={(event) =>
@@ -41,6 +44,7 @@ export default function CartQuantity({ category, product, price }) {
             }
           ></input>
           <button
+            className={styles.quantity_button}
             onClick={() =>
               products.mutate((previous) => {
                 const modifiedItem =
