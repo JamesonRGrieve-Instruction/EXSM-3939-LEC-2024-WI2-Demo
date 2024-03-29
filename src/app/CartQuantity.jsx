@@ -6,15 +6,17 @@ export default function CartQuantity({ category, product, price }) {
     <div>
       <button
         onClick={() =>
-          products.mutate((previous) => [
-            ...previous.filter((item) => item.name !== product),
-            {
-              category: category,
-              name: product,
-              quantity: (previous.find((item) => item.name === product)?.quantity ?? 0) + 1,
-              price: previous.find((item) => item.name === product)?.price ?? price,
-            },
-          ])
+          products.mutate((previous) =>
+            [
+              ...previous.filter((item) => item.name !== product),
+              {
+                category: category,
+                name: product,
+                quantity: (previous.find((item) => item.name === product)?.quantity ?? 0) + 1,
+                price: previous.find((item) => item.name === product)?.price ?? price,
+              },
+            ].sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0)),
+          )
         }
       >
         +
@@ -25,15 +27,17 @@ export default function CartQuantity({ category, product, price }) {
             type='number'
             value={products.data.find((item) => item.name === product).quantity}
             onChange={(event) =>
-              products.mutate((previous) => [
-                ...previous.filter((item) => item.name !== product),
-                {
-                  category: category,
-                  name: product,
-                  quantity: event.target.value,
-                  price: previous.find((item) => item.name === product)?.price ?? price,
-                },
-              ])
+              products.mutate((previous) =>
+                [
+                  ...previous.filter((item) => item.name !== product),
+                  {
+                    category: category,
+                    name: product,
+                    quantity: event.target.value,
+                    price: previous.find((item) => item.name === product)?.price ?? price,
+                  },
+                ].sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0)),
+              )
             }
           ></input>
           <button
@@ -50,7 +54,7 @@ export default function CartQuantity({ category, product, price }) {
                           price: previous.find((item) => item.name === product)?.price ?? price,
                         },
                       ];
-                return [...previous.filter((item) => item.name !== product), ...modifiedItem];
+                return [...previous.filter((item) => item.name !== product), ...modifiedItem].sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0));
               })
             }
           >
