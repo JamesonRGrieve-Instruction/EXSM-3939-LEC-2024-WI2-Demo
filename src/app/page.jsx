@@ -89,7 +89,7 @@ export default function Home() {
       <header>
         <nav>
           <ul>
-            {Object.keys(productData).map((category) => (
+            {[...Object.keys(productData), 'checkout'].map((category) => (
               <li key={category}>
                 <button
                   onClick={() => {

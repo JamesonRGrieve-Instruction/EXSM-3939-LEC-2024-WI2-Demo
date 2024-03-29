@@ -4,7 +4,7 @@ export default function ProductCard({ category, product }) {
   return (
     <div>
       <h2>{product.name}</h2>
-      <CartQuantity category={category} product={product.name} />
+      <CartQuantity category={category} product={product.name} price={product.price} />
     </div>
   );
 }
