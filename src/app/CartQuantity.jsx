@@ -36,14 +36,19 @@ export default function CartQuantity({ category, product }) {
           ></input>
           <button
             onClick={() =>
-              products.mutate((previous) => [
-                ...previous.filter((item) => item.name !== product),
-                {
-                  category: category,
-                  name: product,
-                  quantity: previous.find((item) => item.name === product).quantity - 1,
-                },
-              ])
+              products.mutate((previous) => {
+                const modifiedItem =
+                  (previous.find((item) => item.name === product)?.quantity ?? 0) <= 1
+                    ? []
+                    : [
+                        {
+                          category: category,
+                          name: product,
+                          quantity: previous.find((item) => item.name === product).quantity - 1,
+                        },
+                      ];
+                return [...previous.filter((item) => item.name !== product), ...modifiedItem];
+              })
             }
           >
             -
