@@ -8,6 +8,7 @@ export default function CheckoutTab() {
       {cart.data.map((product) => (
         <CheckoutRow key={product.name} product={product} />
       ))}
+      <p>${Math.round(cart.data.map((item) => item.quantity * item.price).reduce((a, b) => a + b, 0) * 100) / 100}</p>
       <button
         onClick={() => {
           cart.mutate([]);
