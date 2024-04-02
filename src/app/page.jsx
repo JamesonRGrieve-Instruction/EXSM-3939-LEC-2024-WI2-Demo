@@ -31,7 +31,18 @@ export default function Home() {
         }}
       >
         <FormControl>
-          <Slider id='age' value={sliderValue} onChange={(event) => setSliderValue(event.target.value)} />
+          <Slider
+            id='age'
+            valueLabelDisplay='on'
+            min={0}
+            max={120}
+            marks={[
+              { label: '0', value: 0 },
+              { label: '120', value: 120 },
+            ]}
+            value={sliderValue}
+            onChange={(event) => setSliderValue(event.target.value)}
+          />
           <InputLabel htmlFor='age'>Age</InputLabel>
           <FormHelperText>Enter your age.</FormHelperText>
         </FormControl>
