@@ -1,22 +1,47 @@
-import React from 'react';
-import { Box, TextField, Button } from '@mui/material';
+'use client';
+import React, { useState } from 'react';
+import { Box, InputLabel, TextField, Slider, FormHelperText, Button, FormControl } from '@mui/material';
 export default function Home() {
+  const [sliderValue, setSliderValue] = useState(0);
   return (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        width: '100%',
+    <Box
+      component='main'
+      sx={{
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
-      <Box component='main'>
-        <TextField variant='outlined' />
+      <Box
+        component='form'
+        sx={{
+          maxWidth: '800px',
+          width: '80%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          align: 'center',
+          gap: '0.5rem',
+        }}
+      >
+        <FormControl>
+          <Slider id='age' value={sliderValue} onChange={(event) => setSliderValue(event.target.value)} />
+          <InputLabel htmlFor='age'>Age</InputLabel>
+          <FormHelperText>Enter your age.</FormHelperText>
+        </FormControl>
+        <Box display='grid' gridTemplateColumns='1fr 1fr' gap='0.5rem'>
+          <TextField label='First Name' helperText='Enter your first name.' variant='outlined' />
+          <TextField label='Last Name' helperText='Enter your last name.' variant='outlined' />
+        </Box>
+
         <Button variant='contained'>Submit</Button>
       </Box>
-      <main>
-        <input type='text' />
-        <button>Submit</button>
-      </main>
-    </div>
+    </Box>
   );
 }
