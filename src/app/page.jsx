@@ -1,8 +1,10 @@
 'use client';
-import React, { useState } from 'react';
-import { Box, InputLabel, TextField, Slider, FormHelperText, Button, FormControl } from '@mui/material';
+import React, { useContext, useState } from 'react';
+import { Box, InputLabel, TextField, Slider, FormHelperText, Button, FormControl, Switch } from '@mui/material';
+import { ThemeContext } from './ThemeWrapper';
 export default function Home() {
   const [sliderValue, setSliderValue] = useState(0);
+  const darkContext = useContext(ThemeContext);
   return (
     <Box
       component='main'
@@ -53,6 +55,7 @@ export default function Home() {
 
         <Button variant='contained'>Submit</Button>
       </Box>
+      <Switch value={darkContext.value} onClick={() => darkContext.mutate((previous) => !previous)} />
     </Box>
   );
 }
