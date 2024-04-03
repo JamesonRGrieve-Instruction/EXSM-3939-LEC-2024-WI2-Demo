@@ -38,7 +38,9 @@ export default function ThemeWrapper({ children }) {
   const theme = useMemo(
     () =>
       createTheme({
+        ...themeSettings.themeOverrides,
         palette: {
+          ...themeSettings.themeOverrides?.palette,
           mode: themeSettings.dark ? 'dark' : 'light',
           ...(themeSettings.colorblind
             ? {
@@ -50,7 +52,6 @@ export default function ThemeWrapper({ children }) {
               }
             : {}),
         },
-        ...themeSettings.themeOverrides,
       }),
     [themeSettings],
   );
