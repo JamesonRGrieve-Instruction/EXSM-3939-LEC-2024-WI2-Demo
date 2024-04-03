@@ -4,7 +4,7 @@ import { Box, InputLabel, TextField, Slider, FormHelperText, Button, FormControl
 import { ThemeContext } from './ThemeWrapper';
 export default function Home() {
   const [sliderValue, setSliderValue] = useState(0);
-  const darkContext = useContext(ThemeContext);
+  const themeContext = useContext(ThemeContext);
   return (
     <Box
       component='main'
@@ -55,7 +55,36 @@ export default function Home() {
 
         <Button variant='contained'>Submit</Button>
       </Box>
-      <Switch value={darkContext.value} onClick={() => darkContext.mutate((previous) => !previous)} />
+      <Box display='flex' gap='0.5rem'>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            border: '3px solid #ccc',
+            borderRadius: '1rem',
+            padding: '0.5rem',
+          }}
+        >
+          <InputLabel htmlFor='dark'>Dark Mode</InputLabel>
+          <Switch id='dark' value={themeContext.data.dark} onClick={() => themeContext.mutate((previous) => ({ ...previous, dark: !previous.dark }))} />
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            border: '3px solid #ccc',
+            borderRadius: '1rem',
+            padding: '0.5rem',
+          }}
+        >
+          <InputLabel htmlFor='colorblind'>Colorblind Mode</InputLabel>
+          <Switch id='colorblind' value={themeContext.data.colorblind} onClick={() => themeContext.mutate((previous) => ({ ...previous, colorblind: !previous.colorblind }))} />
+        </Box>
+      </Box>
     </Box>
   );
 }
