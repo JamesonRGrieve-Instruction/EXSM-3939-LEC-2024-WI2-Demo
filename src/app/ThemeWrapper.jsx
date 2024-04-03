@@ -40,18 +40,16 @@ export default function ThemeWrapper({ children }) {
       createTheme({
         palette: {
           mode: themeSettings.dark ? 'dark' : 'light',
-        },
-        ...(themeSettings.colorblind
-          ? {
-              palette: {
+          ...(themeSettings.colorblind
+            ? {
                 primary: {
                   light: '#CCC',
                   main: '#888',
                   dark: '#333',
                 },
-              },
-            }
-          : {}),
+              }
+            : {}),
+        },
         ...themeSettings.themeOverrides,
       }),
     [themeSettings],
