@@ -3,6 +3,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Box, InputLabel, TextField, Slider, FormHelperText, Button, FormControl, Switch, Select, MenuItem } from '@mui/material';
 import { lighten, darken } from '@mui/material';
 import { ThemeContext } from './ThemeWrapper';
+// These won't change so we define them external to the component, and they are referenced by their key (which is selected and stateful).
+// Note that these are not full themes, and are rather objects that are passed to the overrides in context and injected that way.
 const themeVariants = {
   default: {},
   spring: {
@@ -44,10 +46,14 @@ const themeVariants = {
 };
 export default function Home() {
   const [sliderValue, setSliderValue] = useState(0);
+  // Start our user defined theme as an empty object to avoid error, since spreading an empty object into an object produces no effect, unlike an object with empty properties which risks overwriting things.
   const [userDefinedTheme, setUserDefinedTheme] = useState({});
+  // This represents what theme the user has selected and maps into the keys of the external constant object.
   const [selectedTheme, setSelectedTheme] = useState('default');
+  // Reference to context for mutating global theme.
   const themeContext = useContext(ThemeContext);
   useEffect(() => {
+    // When the user changes their theme, if the user has the custom theme currently applied, bump their changes into context.
     if (selectedTheme === 'custom') {
       themeContext.mutate((previous) => ({ ...previous, themeOverrides: userDefinedTheme }));
     }
@@ -135,6 +141,9 @@ export default function Home() {
           label='Theme Variant'
           value={selectedTheme}
           onChange={(event) => {
+            // When theme changes, update both locally indexed theme (setSelectedTheme), and global theme (themeContext.mutate).
+            // Since the userDefinedTheme is stored in state, it should be cached if the user switches out and back into it.
+            // Note that since it is in memory only, it will not persist between sessions.
             themeContext.mutate((previous) => ({ ...previous, themeOverrides: event.target.value === 'custom' ? userDefinedTheme : themeVariants[event.target.value] }));
             setSelectedTheme(event.target.value);
           }}
@@ -153,19 +162,11 @@ export default function Home() {
             variant='outlined'
             value={userDefinedTheme?.palette?.primary?.main ?? ''}
             onInput={(event) => {
-              console.log('Updated Theme', {
-                palette: {
-                  primary: {
-                    light: lighten(event.target.value, 0.4),
-                    main: event.target.value,
-                    dark: darken(event.target.value, 0.4),
-                  },
-                },
-              });
-
               setUserDefinedTheme({
                 palette: {
                   primary: {
+                    // Use lighten and darken to pull variants from the main colour the user has entered.
+                    // Once this mutation occurs, the effect hook will fire to update the global theme context.
                     light: lighten(event.target.value, 0.4),
                     main: event.target.value,
                     dark: darken(event.target.value, 0.4),
