@@ -8,14 +8,10 @@ export default {
   title: 'Assignment/Modal',
   component: ModalComponent,
   tags: ['autodocs'],
-  /*
   argTypes: {
-    heading: { control: 'text' },
-    bodyText: { control: 'text' },
-    buttonText: { control: 'text' },
-    functionKey: { control: 'radio', options: ['logClicked', 'logEvent'] },
+    cancelFunctionKey: { control: 'radio', options: ['logClicked', 'logEvent'] },
+    confirmFunctionKey: { control: 'radio', options: ['logClicked', 'logEvent'] },
   },
-  */
   parameters: {
     componentSubtitle: 'A Modal Component For Learning Storybook',
     docs: {
@@ -38,18 +34,34 @@ export default {
     },
   },
 };
-/*
+
 const onClickFunctions = {
   logEvent: (event) => console.log(event),
   logClicked: () => console.log('Clicked!'),
 };
-*/
-// Named export for each story
-export const Modal = (args) => <ModalComponent {...args} />;
 
+// Named export for each story
+export const Modal = (args) => {
+  return (
+    <ModalComponent
+      onConfirm={(event) => {
+        args.onConfirm(event);
+        onClickFunctions[args.confirmFunctionKey](event);
+      }}
+      onCancel={(event) => {
+        args.onCancel(event);
+        onClickFunctions[args.cancelFunctionKey](event);
+      }}
+    >
+      {args.children}
+    </ModalComponent>
+  );
+};
 // Default values for props
 Modal.args = {
   onConfirm: action('Confirmed'),
+  confirmFunctionKey: 'logClicked',
   onCancel: action('Cancelled'),
+  cancelFunctionKey: 'logClicked',
   children: <p>This is a very fun modal, isn&apos;t it?</p>,
 };
