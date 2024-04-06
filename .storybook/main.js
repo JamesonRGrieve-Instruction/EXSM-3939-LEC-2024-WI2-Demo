@@ -3,12 +3,7 @@ import { features } from 'process';
 const path = require('path');
 
 const config = {
-  stories: [
-    '../src/Application.mdx',
-    '../src/exercise/**/*.stories.@(js|jsx|mjs|ts|tsx|mdx)',
-    '../src/app/**/*.stories.@(js|jsx|mjs|ts|tsx|mdx)',
-    '../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx|mdx)',
-  ],
+  stories: ['../src/Application.mdx', '../src/app/**/*.stories.@(js|jsx|mjs|ts|tsx|mdx)', '../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx|mdx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions', '@storybook/addon-docs'],
   framework: {
     name: '@storybook/nextjs',

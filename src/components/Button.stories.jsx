@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import CheckboxComponent from './Checkbox';
+import ButtonComponent from './Button';
 
 // Default export with title
 export default {
-  title: 'Sample/Checkbox',
-  component: CheckboxComponent,
+  title: 'Assignment/Button',
+  component: ButtonComponent,
   tags: ['autodocs'],
   argTypes: {},
   parameters: {
-    componentSubtitle: 'A Checkbox Component For Fields',
+    componentSubtitle: 'A Button Component For Fields',
   },
 };
 
 // Named export for each story
-export const Checkbox = (args) => {
+export const Button = (args) => {
   const [checked, setChecked] = useState(args.checked);
   useEffect(() => {
     setChecked(args.checked);
   }, [args.checked]);
   return (
-    <CheckboxComponent
+    <ButtonComponent
       onChange={(event) => {
         setChecked(event.target.checked);
       }}
@@ -29,6 +29,6 @@ export const Checkbox = (args) => {
 };
 
 // Default values for props
-Checkbox.args = {
+Button.args = {
   checked: false,
 };

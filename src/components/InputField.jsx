@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import styles from './StatefulInput.module.css';
-export default function StatefulInput() {
+export default function InputField() {
   const [inputValue, setInputValue] = useState('');
 
   return (
-    <div className={styles.field}>
+    <div>
       <input
         type='text'
         value={inputValue}

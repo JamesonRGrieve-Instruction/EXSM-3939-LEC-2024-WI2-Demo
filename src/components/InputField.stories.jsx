@@ -1,10 +1,10 @@
 import React from 'react';
-import StatefulInputComponent from './StatefulInput';
+import InputFieldComponent from './InputField';
 
 // Default export with title
 export default {
-  title: 'Sample/StatefulInput',
-  component: StatefulInputComponent,
+  title: 'Assignment/InputField',
+  component: InputFieldComponent,
   tags: ['autodocs'],
   argTypes: {},
   parameters: {
@@ -18,4 +18,4 @@ export default {
 };
 
 // Named export for each story
-export const StatefulInput = () => <StatefulInputComponent />;
+export const InputField = () => <InputFieldComponent />;
