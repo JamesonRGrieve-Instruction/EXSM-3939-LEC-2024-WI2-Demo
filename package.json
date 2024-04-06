@@ -33,6 +33,7 @@
   "devDependencies": {
     "@mdx-js/loader": "^3.0.1",
     "@next/bundle-analyzer": "^14.1.4",
+    "@storybook/addon-actions": "^8.0.6",
     "@storybook/addon-docs": "^8.0.4",
     "@storybook/addon-essentials": "^8.0.4",
     "@storybook/addon-interactions": "^8.0.4",

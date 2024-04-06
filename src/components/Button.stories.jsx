@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ButtonComponent from './Button';
-
+import { action } from '@storybook/addon-actions';
 // Default export with title
 export default {
   title: 'Assignment/Button',
@@ -14,21 +14,12 @@ export default {
 
 // Named export for each story
 export const Button = (args) => {
-  const [checked, setChecked] = useState(args.checked);
-  useEffect(() => {
-    setChecked(args.checked);
-  }, [args.checked]);
-  return (
-    <ButtonComponent
-      onChange={(event) => {
-        setChecked(event.target.checked);
-      }}
-      checked={checked}
-    />
-  );
+  return <ButtonComponent {...args} />;
 };
 
 // Default values for props
 Button.args = {
-  checked: false,
+  disabled: false,
+  label: 'Click Me!',
+  onClick: action('Button Click'),
 };
