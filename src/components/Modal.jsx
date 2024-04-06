@@ -1,19 +1,17 @@
 import React from 'react';
-
-const Modal = ({ heading, bodyText, buttonText, onClick }) => {
+import styles from './Modal.module.css';
+const Modal = ({ onConfirm, onCancel, children }) => {
   return (
-    <a
-      onClick={(event) => {
-        event.preventDefault();
-        onClick(event);
-      }}
-    >
-      <div>
-        <h1>{heading}</h1>
-        <p>{bodyText}</p>
-        <button>{buttonText}</button>
+    <div className={styles.card}>
+      <span>
+        <button onClick={onCancel}>X</button>
+      </span>
+      {children}
+      <div className={styles.button_container}>
+        <button onClick={onConfirm}>Confirm</button>
+        <button onClick={onCancel}>Cancel</button>
       </div>
-    </a>
+    </div>
   );
 };
 
