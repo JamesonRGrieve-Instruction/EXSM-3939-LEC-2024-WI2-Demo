@@ -6,9 +6,6 @@ export default {
   title: 'Assignment/Card',
   component: CardComponent,
   tags: ['autodocs'],
-  argTypes: {
-    text: { control: 'text' },
-  },
   parameters: {
     componentSubtitle: 'A Card Component For Writing Text',
     docs: {
@@ -24,5 +21,7 @@ export const Card = (args) => <CardComponent {...args} />;
 
 // Default values for props
 Card.args = {
-  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+  title: 'Flowers',
+  description: 'Lots of purple flowers.',
+  imageSrc: 'https://cdn.pixabay.com/photo/2024/02/15/15/29/crocus-8575610_1280.jpg',
 };
